@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WorldPay HPP Example</title>
+    <script src='https://payments.worldpay.com/resources/hpp/integrations/embedded/js/hpp-embedded-integration-library.js'></script>
+
+    <script type="text/javascript">
+
+        function renderPayment(paymentUrl)
+        {
+            // Setting the iFrame Options
+            var options = {
+                target: "my-payment-container",
+                iframeHelperURL: "http://localhost:8080/helper.html",
+                url: paymentUrl,
+                type: "iframe",
+                inject: "onload",
+                accessibility: true,
+                debug: false,
+                language: "en",
+                country: "gb",
+            };
+    
+            // Rendering the iFrame
+            var worldPay = new WPCL.Library();
+            worldPay.setup(options);
+        }
+    </script>
+</head>
+
+<body>
+    <div>WorldPay Page Payment</div>
+    
+    <div id="my-payment-container">
+    </div>
+
+    <script type="text/javascript">
+        // Received from the Carnect API
+        var carnectPaymentUrl = "https://payments-test.worldpay.com/app/hpp/integration/wpg/corporate?OrderKey=MYMERCHANT^XXXXXXXX&Ticket=0123456789abcdefgh&source=http%3A%2F%2Fsecure.worldpay.com%2Fsc8&successURL=http%3A%2F%2Fwww.example.com%2Fsuccess&failureURL=http%3A%2F%2Fwww.example.com%2Ffailure&cancelURL=http%3A%2F%2Fwww.example.com%2Fcancel&pendingURL=http%3A%2F%2Fwww.example.com%2Fpending&errorURL=http%3A%2F%2Fwww.example.com%2Ferror&expiryURL=http%3A%2F%2Fwww.example.com%2Fexpiry"
+
+        // Calling WorldPay SDK
+        renderPayment(carnectPaymentUrl);
+    </script>
+</body>
+
+</html>
