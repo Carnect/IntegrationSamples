@@ -8,7 +8,7 @@ This repository contains samples related to many Carnect API Integration.
 
 ## API Documentation
 
-* OTA Documentation: http://doc.carnect.com/
+* OTA Documentation: http://doc.carnect.com/ota2007/
 
 ## About Carnect
 
